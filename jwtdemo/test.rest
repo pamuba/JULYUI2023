@@ -1,7 +1,7 @@
 GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNjk0NDU4MTE0fQ._muKUX024ak1qGTwKZLefkhsyoYZiM42QKmMElwAdP4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNjk0NDYwNDAzLCJleHAiOjE2OTQ0NjA0NDN9.VwW9MoYf9uvv0qsxXCcUAsEbPF0L9awh2-H6mWbfQlA
 ###
-POST http://localhost:3001/login
+POST http://localhost:4001/login
 Content-Type: application/json
 
 {
@@ -9,3 +9,10 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:4001/token
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNjk0NDYwMzYwfQ.WGwxH9s1TeU2nVpnmMvj7cRL4qCGuMpMxk3PGuT7Wmc"
+}
