@@ -1,0 +1,19 @@
+1. gulp(install globally and locally)
+2. gulp-jshint(lint)
+
+
+minify + rename css files
+gulp-rename
+gulp-clean-css
+
+sass compile + minify + rename
+gulp-sass
+sass
+
+sass compile + minify + rename + autoprefixer + sourcemaps
+gulp-autoprefixer
+gulp-sourcemaps
+
+
+image minification
+gulp-imagemin
