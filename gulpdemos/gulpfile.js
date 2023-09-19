@@ -1,12 +1,20 @@
-// let gulp = require('gulp')
-// let jshint = require('gulp-jshint')
-// let cleanCSS = require('gulp-clean-css')
-// let rename = require('gulp-rename')
-// //sass compiler that gulp-sass uses
-// let sass = require('gulp-sass')(require('sass'))
-// let autoprefixer = require('gulp-autoprefixer')
-// let sourcemaps = require('gulp-sourcemaps')
-// let imagemin  = require('gulp-imagemin')
+const gulp = require('gulp')
+const jshint = require('gulp-jshint')
+const cleanCSS = require('gulp-clean-css')
+const rename = require('gulp-rename')
+//sass compiler that gulp-sass uses
+const sass = require('gulp-sass')(require('sass'))
+const autoprefixer = require('gulp-autoprefixer')
+const sourcemaps = require('gulp-sourcemaps')
+const imagemin  = require('gulp-imagemin')
+
+const browserify = require('browserify')
+const babelify = require('babelify')
+const source = require('vinyl-source-stream')
+const buffer = require('vinyl-buffer')
+const uglify = require('gulp-uglify')
+
+
 
 // //gulp --tasks
 // //fulp task-name to run a task
@@ -139,3 +147,28 @@
 //         .pipe(gulp.dest(styleDEST));
 //     done()
 // })
+
+
+const jsSRC = 'script.js';
+const jsFolder = './src/js/';
+const jsDEST = './dist/js/';
+
+const jsFiles = [jsSRC]
+
+gulp.task('js', function(done){
+    jsFiles.map(function(entry){
+        return browserify({
+            entries:[jsFolder+entry]
+        })
+        .transform(babelify, {presets : ['env']})
+        .bundle()
+        .pipe(source(entry))
+        .pipe(rename({extname:'.min.js'}))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps:true}))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(jsDEST))
+    });
+    done();
+})
