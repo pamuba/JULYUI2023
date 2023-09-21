@@ -1,0 +1,7 @@
+What is a D3 selection
+append function
+transformations
+joining data
+Enter
+Exit
+Update
