@@ -36,6 +36,8 @@ async function draw(){
        .attr('width', dimesions.width)
        .attr('height', dimesions.height)
 
+    const tooltip = d3.select('#tooltip')
+
     const ctr = svg.append('g')
                 .attr(
                     'transform',
@@ -49,6 +51,31 @@ async function draw(){
         .attr('r', rAccessor)
         .attr('fill', 'red')
         .attr('temp', yAccessor)
+        .on('mouseenter', function(event, data){
+            d3.select(this)
+            .attr('fill', '#120078')
+            .attr('r', 8)
+        tooltip.style('display', 'block')
+                .style('top', yScale(yAccessor(data))-25+"px")
+                .style('left', xScale(xAccessor(data))+"px")
+
+        const formatter = d3.format('.2f')
+        const dateFormatter = d3.timeFormat('%B %-d, %Y')
+        
+        tooltip.select('.metric-humidity span')
+                .text(xAccessor(data))
+        tooltip.select('.metric-humidity span')
+                .text(formatter(yAccessor(data)))
+        tooltip.select('.metric-date')
+                .text(dateFormatter(data.currently.time))
+        })
+        .on('mouseleave', function(event){
+            d3.select(this)
+                .attr('fill', 'red')
+                .attr('r', 5)
+
+        tooltip.style('display', 'none')
+        })
 
     // Axes
     const xAxis = d3.axisBottom()

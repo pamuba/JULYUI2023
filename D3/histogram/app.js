@@ -34,6 +34,10 @@ async function draw() {
   const xAxisGroup = ctr.append('g')
                         .style('transform', `translateY(${dimensions.ctrHeight}px)`)
 
+
+  const meanLine = ctr.append('line')
+          .classed('mean-line', true)
+
   function histogram(metric){
     const xAccessor = d =>  d.currently[metric]
     const yAccessor = d => d.length
@@ -106,6 +110,16 @@ async function draw() {
         .attr('y', d=> yScale(yAccessor(d))-10)
         .text(yAccessor)
 
+
+
+    //Mean
+    const mean  = d3.mean(dataset, xAccessor)
+    meanLine.raise()
+            .transition(updateTransition)
+            .attr('x1', xScale(mean))
+            .attr('y1',0)
+            .attr('x2', xScale(mean))
+            .attr('y2', dimensions.ctrHeight)
     //Axis
     const xAxis = d3.axisBottom(xScale)    
     xAxisGroup.transition().call(xAxis)

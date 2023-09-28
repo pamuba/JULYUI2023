@@ -15,7 +15,7 @@
   display: none;
 }
 
-#tooltip .metric-date {
+#tooltip .metric-date .metric-humidity {
   text-decoration: underline;
 }
 .axis{
