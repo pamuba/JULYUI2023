@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/cli": "^13.3.11",
+    "bcrypt": "^5.1.1"
+  }
+}

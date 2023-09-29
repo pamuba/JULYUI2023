@@ -51,8 +51,17 @@ function Calculator() {
   };
 
   Object.defineProperty(Calculator.prototype, 'version', {
-    get : function(){
-      return '1.0';
+
+      get: function(){
+        return fetch('https://gist.githubusercontent.com/pamuba/c414a053d923444d68fc211cb090cec8/raw/988f50e2efd1e9933958c5a26b6e5eda56469f9b/version.json')
+             .then(function(result){
+               return result.json()
+             })
+             .then(function(json){
+               console.log(json.version)
+               return json.version;
+             })
+      
     },
     enumerable:true,
     configurable:true
