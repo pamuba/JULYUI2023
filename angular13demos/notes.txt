@@ -1,0 +1,8 @@
+1.Interpolation
+2. Property binding
+3. class binding
+4. style binding
+5. if
+6. switch
+7. ngFor
+8. ngSwitch
