@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const videoSchema = new Schema({
     title:String,
     url:String,
-    dscription:String
+    description:String
 });
 
 module.exports = mongoose.model('video', videoSchema, 'videos')
