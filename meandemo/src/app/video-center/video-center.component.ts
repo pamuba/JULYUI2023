@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Video } from '../video';
+import { VideoService } from '../video.service';
 
 @Component({
   selector: 'app-video-center',
@@ -7,16 +8,37 @@ import { Video } from '../video';
   styleUrls: ['./video-center.component.css']
 })
 export class VideoCenterComponent {
-  videos: Video[] = [
+  
+  videos!: Array<Video>
+  selectedVideo! :any;
+  public hidenewVideo : boolean = true
 
-    {"_id":"1", "title":"Title 1", "url":"Url 1", "description":"description No. 1"},
-    {"_id":"2", "title":"Title 2", "url":"Url 2", "description":"description No. 2"},
-    {"_id":"3", "title":"Title 3", "url":"Url 3", "description":"description No. 3"}
+   constructor(private _videoService:VideoService){}
 
-  ]
+  ngOnInit(){
+    this._videoService.getVideos()
+        .subscribe(resVideoData => this.videos = resVideoData)
+  }
 
-  selectedVideo! :Video;
   onSelectVideo(video:any){
     this.selectedVideo = video
+    this.hidenewVideo = true
+  }
+
+  onSubmitAddVideo(video:Video){
+    this._videoService.addVideo(video)
+        .subscribe(resNewVideo => {
+          this.videos.push(resNewVideo)
+          this.hidenewVideo = true
+          this.selectedVideo = resNewVideo
+        })
+  }
+  newVideo(){
+    this.hidenewVideo = false
+  }
+  onUpdateVideoEvent(vid:Video){
+    this._videoService.updateVideo(vid)
+        .subscribe(resUpdatedVideo => vid = resUpdatedVideo)
+    this.selectedVideo = null;
   }
 }
