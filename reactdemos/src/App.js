@@ -13,6 +13,12 @@ import Form from './components/Form';
 import Hero from './components/Hero';
 import ErrorBoundary from './components/ErrorBoundary';
 import PureComp from './components/PureComp';
+import ParentComp from './components/ParentComp';
+import RefsDemo from './components/RefsDemo';
+import FrwRefParent from './components/FrwRefParent';
+import ClickCounter from './components/ClickCounter';
+import HoverCounter from './components/HoverCounter';
+import PostList from './components/PostList';
 
 function App() {
   return (
@@ -57,7 +63,14 @@ function App() {
        <Hero heroName="Joker"></Hero>
       </ErrorBoundary> */}
 
-      <PureComp></PureComp>
+      {/* <ParentComp></ParentComp> */}
+      {/* <RefsDemo></RefsDemo> */}
+
+      {/* <FrwRefParent></FrwRefParent> */}
+      {/* <ClickCounter></ClickCounter>
+      <HoverCounter></HoverCounter> */}
+
+      <PostList></PostList>
       </header>
     </div>
   );

@@ -1,0 +1,8 @@
+shouldComponentUpdate
+{
+    return true
+}
+
+shallow props and state comparison
+
+Shallow Comparison
