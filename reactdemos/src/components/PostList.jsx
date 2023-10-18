@@ -6,14 +6,33 @@ export class PostList extends Component {
     super(props)
   
     this.state = {
-       posts : []
+       posts : [],
+       count:1
     }
+    this.inputRef = React.createRef()
   }
   componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/posts")
+    
+    console.log("first")
+    axios.get("https://jsonplaceholder.typicode.com/posts/")
         .then(response=>{
             console.log(response)
             this.setState({posts: response.data})
+        })
+        .catch( error => {
+            console.log(error.message)
+        })
+  }
+  handler = () => {
+        
+        this.setState({
+            count: this.inputRef.current.value
+        })
+        const {count} = this.state
+        axios.get("https://jsonplaceholder.typicode.com/posts/"+count)
+        .then(response=>{
+            console.log(response)
+            this.setState({posts: response})
         })
         .catch( error => {
             console.log(error.message)
@@ -25,12 +44,12 @@ export class PostList extends Component {
       <>
         <h2>List of Posts</h2>
         <hr></hr>
-        <input type="text"/><button>GET</button>
+        <input type="text" ref={this.inputRef}/><button onClick={this.handler}>GET</button>
         <hr></hr>
         {
-            posts.length ? 
-            posts.map(post => <div key={post.id}>{post.title}</div>):
-            null
+            // posts.length ? 
+            posts.map(post => <div key={post.id}>{post.title}</div>)
+            // null
         }
       </>
     )
