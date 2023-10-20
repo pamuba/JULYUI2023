@@ -19,6 +19,11 @@ import FrwRefParent from './components/FrwRefParent';
 import ClickCounter from './components/ClickCounter';
 import HoverCounter from './components/HoverCounter';
 import PostList from './components/PostList';
+import UseEffcteDemo from './hooks/useEffcteDemo';
+import HookMouse from './hooks/HookMouse';
+import MouseContainer from './hooks/MouseContainer';
+import ComponentC from './hooks/ComponentC';
+import { UserProvider } from './hooks/UseContext';
 
 function App() {
   return (
@@ -70,7 +75,15 @@ function App() {
       {/* <ClickCounter></ClickCounter>
       <HoverCounter></HoverCounter> */}
 
-      <PostList></PostList>
+      {/* <PostList></PostList> */}
+      {/* <HookCounter4></HookCounter4> */}
+      {/* <UseEffcteDemo></UseEffcteDemo> */}
+      {/* <HookMouse></HookMouse> */}
+      {/* <MouseContainer></MouseContainer> */}
+      <UserProvider value="John Smith">
+        <ComponentC></ComponentC>
+      </UserProvider>
+      
       </header>
     </div>
   );
