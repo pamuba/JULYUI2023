@@ -5,11 +5,11 @@ const initialState = {
 }
 
 const LaptopReducer = (state=initialState, action) => {
-    console.log("Inside laptop")
+    console.log("------------------",action.payload)
     switch(action.type){
         case BUY_LAPTOPS : return{
             ...state,
-            numOfLaptops: state.numOfLaptops - 1 
+            numOfLaptops: state.numOfLaptops - parseInt(action.payload) 
         }
         default: return state
     }

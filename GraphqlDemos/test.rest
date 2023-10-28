@@ -1,0 +1,14 @@
+GET https://localhost:44345/map1
+
+####
+
+POST https://localhost:44345/map2
+
+###
+
+PUT https://localhost:44345/map2
+
+###
+
+DELETE https://localhost:44345/map2
+

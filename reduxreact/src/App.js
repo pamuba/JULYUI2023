@@ -4,15 +4,19 @@ import store from './redux/store';
 import HooksContainer from './components/HooksContainer';
 import PhoneContainer from './components/PhoneContainer';
 import LaptopContainer from './components/LaptopContainer';
+import NewLaptopComponent from './components/NewLaptopComponent';
+import UserContainer from './components/UserContainer';
 
 function App() {
   return (
     // <Provider store={store}>
       <div className="App">
       <header className="App-header">
-         <LaptopContainer/>
+         {/* <LaptopContainer/>
          <HooksContainer></HooksContainer>
          <PhoneContainer></PhoneContainer>
+         <NewLaptopComponent></NewLaptopComponent>  */}
+         <UserContainer></UserContainer>
       </header>
       </div>
     // </Provider>
