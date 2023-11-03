@@ -2,6 +2,7 @@
 import { legacy_createStore as createStore , applyMiddleware} from 'redux';
 import { configureStore } from '@reduxjs/toolkit'
 import LaptopReducer from './laptops/laptopReducer'
+
 // import { composeWithDevTools } from '@reduxjs/toolkit/dist/devtoolsExtension';
 import rootReducer from './rootReducer'
 import logger from 'redux-logger'
